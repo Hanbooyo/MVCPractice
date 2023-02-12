@@ -40,4 +40,13 @@ public class DAOImpl implements DAO{
 		return result;
 	}
 
+
+	@Override
+	public void add(BoardVO boardVO) throws DataAccessException {
+		System.out.println("insert 하는중");
+		int newNo = sqlSession.selectOne("mapper.board.newNo");
+		boardVO.setNo(newNo);
+		sqlSession.insert("mapper.board.add", boardVO);
+	}
+
 }

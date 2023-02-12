@@ -87,12 +87,25 @@ public class ControlImpl implements Control {
 		mav.setViewName("view");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/addForm.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("write");
+		return mav;
+	}
 
 	@Override
-	public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	@RequestMapping(value = "/add.do", method = {RequestMethod.POST})
+	public ModelAndView add(BoardVO boardVO, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		ModelAndView mav = new ModelAndView();
+		dao.add(boardVO);
+		mav.setViewName("redirect:/list.do");
+		System.out.println(mav.getViewName());
+		return mav;
 	}
+
 
 	@Override
 	public ModelAndView remove(int no, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -106,5 +119,7 @@ public class ControlImpl implements Control {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

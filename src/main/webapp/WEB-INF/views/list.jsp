@@ -22,12 +22,11 @@
 	}
 </style>
 <script>
-	function fn_articleForm(isLogOn, articleForm, loginForm) {
+	function fn_add(isLogOn, addForm) {
 		if(isLogOn != '' && isLogOn != 'false') {
-			location.href=articleForm;
+			location.href=addForm;
 		}else {
 			alert('로그인 후 글쓰기가 가능합니다.');
-			location.href=loginForm + '?action=/articleForm.do';
 		}
 	}
 </script>
@@ -113,7 +112,7 @@
 			</c:forEach>
 			<tr>
 				<td colspan="4" align="right">
-					<input type="button" value="글쓰기" onclick="">
+					<input type="button" value="글쓰기" onclick="javascript:fn_add('${isLogOn}', '${contextPath}/addForm.do')">
 				</td>
 			</tr>
 		</table>

@@ -27,7 +27,6 @@
 			location.href=articleForm;
 		}else {
 			alert('로그인 후 글쓰기가 가능합니다.');
-			location.href=loginForm + '?action=/articleForm.do';
 		}
 	}
 </script>
@@ -86,29 +85,22 @@
 	</table>
 	</header>
 	<div text-align="center">
-		<table align="center">
+	<form action="add.do" method="post">
+		<table border="1" align="center">
 			<tr>
-				<td width="100">글 번호</td><td width="200">${board.no}</td>
+				<th width="100">작성자</th><td width="200"><input type="text" name="id" value="${member.id}" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<td width="100">작성자</td><td width="200">${board.id}</td>
+				<th width="100">제 목</th><td width="200"><input type="text" name="title"></td>
 			</tr>
 			<tr>
-				<td width="100">제 목</td><td width="200">${board.title}</td>
+				<th width="100">내 용</th><td width="200"><textarea rows="10" cols="30" name="content"></textarea></td>
 			</tr>
 			<tr>
-				<td width="100">본 문</td><td width="200">${board.content}</td>
-			</tr>
-			<tr>
-				<td width="100">작성일</td><td width="200">${board.wdate}</td>
-			</tr>
-			<tr>
-				<td width="100">조회수</td><td width="200">${board.views}</td>
-			</tr>
-			<tr>
-				<td><a type="button" href="">수정</a></td><td><a type="button" href="">삭제</a></td>
+				<td><input type="submit" value="완료"></td><td><input type="button" value="취소" onclick="location.href='list.do'"></td>
 			</tr>
 		</table>
+	</form>
 			<h1><a type="button" href="${contextPath}/list.do">게시판 목록으로</a></h1>
 	</div>
 </body>

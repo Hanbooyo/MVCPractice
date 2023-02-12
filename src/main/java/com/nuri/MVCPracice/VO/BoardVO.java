@@ -27,6 +27,13 @@ public class BoardVO {
 		this.content = content;
 	}
 	
+	public BoardVO(String id, String title, String content) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+	}
+	
 	public int getNo() {
 		return no;
 	}

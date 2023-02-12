@@ -28,7 +28,8 @@ public interface Control {
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Exception;
 	
-	public ModelAndView add(HttpServletRequest request,
+	public ModelAndView add(@ModelAttribute("boardVO") BoardVO boardVO,
+			HttpServletRequest request,
 			HttpServletResponse response) throws Exception;
 	
 	public ModelAndView remove(@RequestParam("no") int no,

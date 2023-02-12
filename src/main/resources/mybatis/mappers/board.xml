@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 글 번호 생성용 메소드 -->
-	<select id="no" resultType="int">
+	<select id="newNo" resultType="int">
 		<![CDATA[
 			SELECT max(no)+1 from T_board
 		]]>
@@ -42,4 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select * from T_board where no=#{value}
 		]]>
 	</select>
+	
+	<!-- 글 작성 -->
+	<insert id="add" parameterType="boardVO">
+		<![CDATA[
+			insert into T_BOARD (no, id, title, content)
+			VALUES(#{no}, #{id}, #{title}, #{content})
+		]]>
+	</insert>
 </mapper>

@@ -86,7 +86,7 @@
 	</table>
 	</header>
 	<div text-align="center">
-		<table align="center">
+		<table border="1" align="center">
 			<tr>
 				<td width="100">글 번호</td><td width="200">${board.no}</td>
 			</tr>
@@ -106,7 +106,7 @@
 				<td width="100">조회수</td><td width="200">${board.views}</td>
 			</tr>
 			<tr>
-				<td><a type="button" href="">수정</a></td><td><a type="button" href="">삭제</a></td>
+				<td><input type="button" onclick="location.href='${contextPath}/update.do?no=${board.no}'" value="수정"></a></td><td><input type="button" onclick="location.href='${contextPath}/remove.do?no=${board.no}'" value="삭제"></a></td>
 			</tr>
 		</table>
 			<h1><a type="button" href="${contextPath}/list.do">게시판 목록으로</a></h1>

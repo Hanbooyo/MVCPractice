@@ -108,9 +108,12 @@ public class ControlImpl implements Control {
 
 
 	@Override
+	@RequestMapping(value = "/remove.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView remove(int no, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		ModelAndView mav = new ModelAndView();
+		dao.delete(no);
+		mav.setViewName("redirect:/list.do");
+		return mav;
 	}
 
 	@Override

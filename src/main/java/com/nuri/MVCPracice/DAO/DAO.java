@@ -12,4 +12,5 @@ public interface DAO {
 	public List<BoardVO> listAll() throws DataAccessException;
 	public BoardVO listOne(int no) throws DataAccessException;
 	public void add(BoardVO boardVO) throws DataAccessException;
+	public void delete(int no) throws DataAccessException;
 }

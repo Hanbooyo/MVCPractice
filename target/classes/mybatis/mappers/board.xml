@@ -43,6 +43,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<!-- 선택 글 삭제 -->
+	<delete id="remove" parameterType="int">
+		<![CDATA[
+			delete from T_board where no=#{value}
+		]]>
+	</delete>
+	
 	<!-- 글 작성 -->
 	<insert id="add" parameterType="boardVO">
 		<![CDATA[

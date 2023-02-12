@@ -49,4 +49,10 @@ public class DAOImpl implements DAO{
 		sqlSession.insert("mapper.board.add", boardVO);
 	}
 
+
+	@Override
+	public void delete(int no) throws DataAccessException {
+		sqlSession.delete("mapper.board.remove", no);
+	}
+
 }

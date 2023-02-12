@@ -107,8 +107,8 @@
 				<th>${board.no}</th>
 				<th>${board.id}</th>
 				<th>${board.title}</th>
-				<th>${board.date}</th>
-				<th>${board.view}</th>
+				<th>${board.wdate}</th>
+				<th>${board.views}</th>
 			</tr>
 			</c:forEach>
 			<tr>

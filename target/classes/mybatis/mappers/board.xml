@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 다른 파일의 SQL문과 구분하기 위해 -->
+<mapper namespace="mapper.board">
+	<resultMap type="boardVO" id="bResult">
+	<!-- DB상의 column을  memberVO 타입으로 property라는 속성에 넣는다. -->
+		<result property="no" column="no"/>
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="wdate" column="wdate"/>
+		<result property="views" column="views"/>
+	</resultMap>
+
+	<!-- 전체 글 목록 -->
+	<select id="listAll" resultMap="bResult">
+		<!-- SQL문 활용에 있어 괄호나 기타 특수문자가 태그 기호로 인식되는걸 방지하기 위해 CDATA 필수 -->
+		<![CDATA[
+			select * from T_board order by no desc
+		]]>
+	</select>
+	
+	<!-- 글 번호 생성용 메소드 -->
+	<select id="no" resultType="int">
+		<![CDATA[
+			SELECT max(no)+1 from T_board
+		]]>
+	</select>
+	
+	<!-- 선택 글 -->
+	<select id="listOne" resultType="boardVO" parameterType="int">
+		<![CDATA[
+			select * from T_board order where no=#{value}
+		]]>
+	</select>
+</mapper>

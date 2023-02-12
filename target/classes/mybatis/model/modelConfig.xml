@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.nuri.MVCPracice.VO.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.nuri.MVCPracice.VO.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.nuri.MVCPracice.VO.BoardVO" alias="boardVO"/>
 	</typeAliases>
 </configuration>

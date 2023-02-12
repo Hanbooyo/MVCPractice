@@ -1,5 +1,7 @@
 package com.nuri.MVCPracice.Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nuri.MVCPracice.DAO.DAO;
+import com.nuri.MVCPracice.VO.BoardVO;
 import com.nuri.MVCPracice.VO.MemberVO;
 @Controller("Control")
 public class ControlImpl implements Control {
@@ -22,6 +25,9 @@ public class ControlImpl implements Control {
 	
 	@Autowired
 	private MemberVO memberVO;
+	
+	@Autowired
+	private BoardVO boardVO;
 	
 	
 	//메인 페이지로 이동
@@ -60,6 +66,41 @@ public class ControlImpl implements Control {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/main.do");
 		return mav;
+	}
+
+	@Override
+	@RequestMapping(value = "/list.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView listAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		List<BoardVO> list = dao.listAll();
+		mav.addObject("list", list);
+		mav.setViewName("list");
+		return mav;
+	}
+
+	@Override
+	public ModelAndView listOne(int no, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ModelAndView remove(int no, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ModelAndView update(BoardVO boardVO, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

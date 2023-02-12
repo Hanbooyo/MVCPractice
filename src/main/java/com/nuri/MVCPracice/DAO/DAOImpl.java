@@ -31,4 +31,13 @@ public class DAOImpl implements DAO{
 		return result;
 	}
 
+
+	@Override
+	public BoardVO listOne(int no) throws DataAccessException {
+		//조회수 +1
+		sqlSession.update("mapper.board.views", no);
+		BoardVO result = sqlSession.selectOne("mapper.board.listOne", no);
+		return result;
+	}
+
 }

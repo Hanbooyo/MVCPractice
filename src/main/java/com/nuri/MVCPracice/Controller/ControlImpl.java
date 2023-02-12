@@ -79,9 +79,13 @@ public class ControlImpl implements Control {
 	}
 
 	@Override
+	@RequestMapping(value = "/view.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView listOne(int no, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		ModelAndView mav = new ModelAndView();
+		BoardVO board= dao.listOne(no);
+		mav.addObject("board", board);
+		mav.setViewName("view");
+		return mav;
 	}
 
 	@Override

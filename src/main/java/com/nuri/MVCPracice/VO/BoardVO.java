@@ -15,7 +15,6 @@ public class BoardVO {
 	private int views;
 	
 	
-	
 	public BoardVO() {
 		super();
 	}

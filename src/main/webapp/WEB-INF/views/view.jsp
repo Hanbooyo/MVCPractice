@@ -69,7 +69,7 @@
 								</tr>
 								<tr>
 									<td width="200"><p align="right">비밀번호</p></td>
-									<td width="400"><input type="text" name="pwd"></td>
+									<td width="400"><input type="password" name="pwd"></td>
 								</tr>
 								<tr>
 									<td colspan="2" align="center">
@@ -85,38 +85,28 @@
 		</tr>
 	</table>
 	</header>
-	<div align="center">
-		<h1>게시판 목록</h1>
-		<table border="1">
-			<colgroup>
-				<col width="50">
-				<col width="100">
-				<col width="300">
-				<col width="100">
-				<col width="50">
-			</colgroup>
+	<div text-align="center">
+		<table align="center">
 			<tr>
-				<th>글번호</th>
-				<th>작성자</th>
-				<th>제 목</th>
-				<th>작성일</th>
-				<th>조회수</th>
+				<td>글 번호</td><td>${board.no}</td>
 			</tr>
-			<c:forEach items="${list}" var="board">
 			<tr>
-				<th>${board.no}</th>
-				<th>${board.id}</th>
-				<th><a href="${contextPath}/view.do?no=${board.no}">${board.title}</a></th>
-				<th>${board.wdate}</th>
-				<th>${board.views}</th>
+				<td>작성자</td><td>${board.id}</td>
 			</tr>
-			</c:forEach>
 			<tr>
-				<td colspan="4" align="right">
-					<input type="button" value="글쓰기" onclick="">
-				</td>
+				<td>제 목</td><td>${board.title}</td>
+			</tr>
+			<tr>
+				<td>본 문</td><td>${board.content}</td>
+			</tr>
+			<tr>
+				<td>작성일</td><td>${board.wdate}</td>
+			</tr>
+			<tr>
+				<td>조회수</td><td>${board.views}</td>
 			</tr>
 		</table>
-	</div>		
+			<h1><a type="button" href="${contextPath}/list.do">게시판 목록으로</a></h1>
+	</div>
 </body>
 </html>

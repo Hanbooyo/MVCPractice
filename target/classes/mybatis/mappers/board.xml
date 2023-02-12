@@ -29,10 +29,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<!-- 조회수 업데이트 메소드 -->
+	<update id="views" parameterType="int">
+        update T_board
+        set views = views + 1
+        where no = #{value}
+	</update>
+	
 	<!-- 선택 글 -->
 	<select id="listOne" resultType="boardVO" parameterType="int">
 		<![CDATA[
-			select * from T_board order where no=#{value}
+			select * from T_board where no=#{value}
 		]]>
 	</select>
 </mapper>

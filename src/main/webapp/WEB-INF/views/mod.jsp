@@ -21,7 +21,16 @@
 		color : black;
 	}
 </style>
-
+<script>
+	function fn_articleForm(isLogOn, articleForm, loginForm) {
+		if(isLogOn != '' && isLogOn != 'false') {
+			location.href=articleForm;
+		}else {
+			alert('로그인 후 글쓰기가 가능합니다.');
+			location.href=loginForm + '?action=/articleForm.do';
+		}
+	}
+</script>
 <c:choose>
 	<c:when test="${result=='loginFailed'}">
 		<script>
@@ -77,18 +86,19 @@
 	</table>
 	</header>
 	<div text-align="center">
+	<form action="${contextPath}/update.do" method="post">
 		<table border="1" align="center">
 			<tr>
-				<td width="100">글 번호</td><td width="200">${board.no}</td>
+				<td width="100">글 번호</td><td width="200"><input type="hidden" name="no" value="${board.no}">${board.no}</td>
 			</tr>
 			<tr>
-				<td width="100">작성자</td><td width="200">${board.id}</td>
+				<td width="100">작성자</td><td width="200"><input type="hidden" name="id" value="${board.id}">${board.id}</td>
 			</tr>
 			<tr>
-				<td width="100">제 목</td><td width="200">${board.title}</td>
+				<td width="100">제 목</td><td width="200"><input type="text" name="title" value="${board.title}"></td>
 			</tr>
 			<tr>
-				<td width="100">본 문</td><td width="200">${board.content}</td>
+				<td width="100">본 문</td><td width="200"><textarea cols="60" rows="10" name="content">${board.content}</textarea></td>
 			</tr>
 			<tr>
 				<td width="100">작성일</td><td width="200">${board.wdate}</td>
@@ -97,26 +107,11 @@
 				<td width="100">조회수</td><td width="200">${board.views}</td>
 			</tr>
 			<tr>
-				<td><input type="button" onclick="checkLogin();" value="수정"></a></td><td><input type="button" onclick="location.href='${contextPath}/remove.do?no=${board.no}'" value="삭제"></a></td>
+				<td><input type="submit" value="완료"></td><td><input type="button" onclick="location.href='${contextPath}/list.do}'" value="취소"></td>
 			</tr>
 		</table>
+		</form>
 			<h1><a type="button" href="${contextPath}/list.do">게시판 목록으로</a></h1>
 	</div>
 </body>
-
-<script>
-	function checkLogin() {
-	    var id = '${member.id}'; // 수정 ''처리
-	    // 수정 ''공백 비교
-	    if (id == '') {
-	        alert("로그인 후 수정이 가능합니다.");
-	        return false;
-	    } else if(id == '${board.id}') {
-	    	return location.href = '${contextPath}/mod.do?no=${board.no}';
-	    } else {
-	    	alert("작성자가 다릅니다 ㅋㅋ");
-	    }
-	}
-</script>
-
 </html>

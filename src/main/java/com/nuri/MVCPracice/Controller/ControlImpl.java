@@ -116,11 +116,25 @@ public class ControlImpl implements Control {
 		return mav;
 	}
 
+	@RequestMapping(value = "/mod.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView update(int no, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		ModelAndView mav = new ModelAndView();
+		dao.listOne(no);
+		BoardVO board= dao.listOne(no);
+		mav.addObject("board", board);
+		mav.setViewName("mod");
+		return mav;
+	}
+	
 	@Override
+	@RequestMapping(value = "/update.do", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView update(BoardVO boardVO, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		ModelAndView mav = new ModelAndView();
+		dao.update(boardVO);
+		mav.setViewName("redirect:/list.do");
+		return mav;
 	}
 
 

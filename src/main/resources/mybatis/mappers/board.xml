@@ -57,4 +57,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			VALUES(#{no}, #{id}, #{title}, #{content})
 		]]>
 	</insert>
+	
+	<!-- 글 수정 -->
+	<update id="mod" parameterType="boardVO">
+		<![CDATA[
+        update T_board
+        set title = #{title}, content=#{content}
+        where no = #{no}
+  		]]>
+	</update>
 </mapper>

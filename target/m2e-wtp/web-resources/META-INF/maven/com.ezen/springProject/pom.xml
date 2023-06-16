@@ -117,6 +117,7 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- 데이터 베이스 관련 라이브러리 (마이바티스 포함) -->
 		<dependency>
 			<groupId>commons-beanutils</groupId>
